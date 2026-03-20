@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f2f2f2;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    background: white;
+    max-width: 700px;
+    width: 95%;
+    display: flex;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 5px 20px rgba(104, 5, 235, 0.1);
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column-reverse;
+        padding: 20px;
+    }
+    .login-box {
+        padding-right: 0 !important;
+        margin-top: 20px;
+    }
+}
+
+.login-box {
+    flex: 1;
+    padding-right: 100px;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+
+form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 25px;
+    border: 1px solid #ddd;
+    outline: none;
+}
+
+/* Hide number input arrows for WebKit browsers (Chrome, Safari, Edge) */
+form input[type="number"]::-webkit-outer-spin-button,
+form input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+/* Hide number input arrows for Firefox */
+form input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: black;
+    color: white;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.image-box {
+    flex: 1;
+}
+
+.image-box img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    object-fit: cover;
+}

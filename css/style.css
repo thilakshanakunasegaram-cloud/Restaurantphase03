@@ -1,0 +1,360 @@
+body {
+    background: #dcdcdc;
+}
+
+.header {
+    background: #161C24;
+    /* Match logo background */
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    font-weight: bold;
+}
+
+.icons i {
+    font-size: 25px;
+    margin-left: 20px;
+    cursor: pointer;
+    color: #E2C785;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.icons i:hover {
+    transform: scale(1.2);
+    color: #ffffff;
+}
+
+
+.icons a {
+    color: #E2C785;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.foodBox {
+    padding: 10px;
+    text-align: center;
+    border: 2px solid #e2e8f0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.foodBox:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    border-color: #F59E0B;
+}
+
+
+.foodBox img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    border-bottom: 2px solid #e2e8f0;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-weight: bold;
+}
+
+.qty {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.qty button {
+    width: 32px;
+    height: 32px;
+    font-weight: bold;
+    border: 1px solid #e2e8f0;
+    background: #f1f5f9;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.qty button:first-of-type {
+    color: #EF4444;
+}
+
+.qty button:last-of-type {
+    color: #10B981;
+}
+
+.qty button:hover {
+    background: #e2e8f0;
+    color: white;
+    transform: scale(1.1);
+}
+
+.qty button:active {
+    transform: scale(0.9);
+}
+
+
+/* Global Transitions & Animations */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.food-card {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Staggered animation delays for the first few items */
+.food-card:nth-child(1) { animation-delay: 0.1s; }
+.food-card:nth-child(2) { animation-delay: 0.2s; }
+.food-card:nth-child(3) { animation-delay: 0.3s; }
+.food-card:nth-child(4) { animation-delay: 0.4s; }
+.food-card:nth-child(n+5) { animation-delay: 0.5s; }
+
+
+/* Payment Modal Styles */
+.payment-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.payment-modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.payment-box {
+    background-color: white;
+    padding: 30px;
+    border: 2px solid #e2e8f0;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 12px;
+    transform: scale(0.8);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.payment-modal.active .payment-box {
+    transform: scale(1);
+}
+
+
+.payment-box h2 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.payment-box h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.receive-cash {
+    color: #ff4d4d;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 15px;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.cancel {
+    background-color: #ccc;
+    border: none;
+    padding: 8px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    color: black;
+}
+
+.pay {
+    background-color: #32cd32;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.pay:hover {
+    background-color: #28a428;
+}
+
+.pay:active {
+    transform: scale(0.95);
+}
+
+
+.success-icon i {
+    background-color: #32cd32;
+    color: black;
+    border-radius: 50%;
+    padding: 10px 15px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.action-btns {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.home-btn {
+    background-color: #ffcc00;
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: black;
+}
+
+.hourglass-btn {
+    background-color: #ff6666;
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: black;
+}
+
+/* Cart Specific Styles matching the wireframe */
+.cart-box {
+    display: flex;
+    align-items: center;
+    border: 2px solid #e2e8f0;
+    padding: 15px;
+    margin-bottom: 20px;
+    background: white;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    animation: fadeInUp 0.4s ease-out;
+}
+
+.cart-box:hover {
+    transform: translateX(5px);
+}
+
+
+.cart-box img {
+    border: 2px solid #e2e8f0;
+    margin-right: 20px;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
+
+.cart-info {
+    flex-grow: 1;
+}
+
+.cart-info h5,
+.cart-info p {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.cart-right {
+    text-align: right;
+    font-weight: bold;
+}
+
+.remove {
+    background-color: red;
+    color: black;
+    border: 1px solid #e2e8f0;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.add-btn {
+    background-color: #E2C785;
+    border: 2px solid #e2e8f0;
+    padding: 10px 40px;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.add-btn:hover {
+    background-color: #d4b874;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+
+.total-box {
+    border: 2px solid #e2e8f0;
+    padding: 20px;
+    text-align: center;
+    background: white;
+}
+
+.total-box h4 {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.total-box h3 {
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.order-btn {
+    background-color: #32cd32;
+    border: 2px solid #e2e8f0;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    color: black;
+}
